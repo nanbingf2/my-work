@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>控制器</title>
+</head>
+<body>
+
+<!--测试ng-repeat-->
+<div ng-app="myApp" ng-controller="personController">
+   <ul>
+       <li ng-repeat="person in people">
+            {{person.name + "," + person.age}}
+       </li>
+   </ul>
+</div>
+
+<script type="text/javascript" src="../../../static/angular/angular.min.js"></script>
+<script>
+    angular.module("myApp",[]).controller("personController",function($scope){
+        $scope.people = [
+            {name:'zhangsan',age:'18'},
+            {name:'lisi',age:'20'},
+            {name:'wangwu',age:'22'}
+        ]
+    })
+
+</script>
+</body>
+</html>

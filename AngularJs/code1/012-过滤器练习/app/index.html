@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器</title>
+    <link rel="stylesheet" href="../../../static/bootstrap/css/bootstrap.min.css">
+</head>
+<body ng-app="productApp" ng-controller="productController">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input type="text" ng-model="search" class="form-control" placeholder="Search">
+            </div>
+        </form>
+    </div>
+</nav>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>产品编号<span class="caret"></span></th>
+                <th>产品名称<span class="caret"></span></th>
+                <th>产品价格<span class="caret"></span></th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="product in products | filter:search | orderBy:'id'">
+            <tr>
+                <td>{{product.id}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.price | currency:'￥'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript" src="../../../static/angular/angular.min.js"></script>
+<script type="text/javascript" src="../controller/productControll.js"></script>
+
+</body>
+</html>

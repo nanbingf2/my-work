@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器</title>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+
+<div>
+    <p>当前页面的URL地址:{{myUrl}}</p>
+
+    <p>3秒后更新值:{{data}}</p>
+
+    <p>每隔一秒更新值:{{num}}</p>
+<div ng-controller="myController2">
+    <input type="text" ng-model="name" placeholder="请输入你的名字"/>你的名字{{name}}
+    <button ng-click="greet()">sayHello</button>{{greetInfo}}
+
+    <p>原始数据:{{1,2,3,4,5,6,7,8,9}}</p>
+    <p>反转后数据:{{1,2,3,4,5,6,7,8,9 | reverse}}</p>
+
+</div>
+
+
+</div>
+<script type="text/javascript" src="../../../static/angular/angular.min.js"></script>
+<script type="text/javascript" src="../controller/controll.js"></script>
+
+</body>
+</html>

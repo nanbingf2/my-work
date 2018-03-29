@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../../../static/angular/angular.min.js"></script>
+</head>
+
+<body ng-app>
+<div>
+    <!-- 简单表达式测试 -->
+    <label>表达式100+200结果:</label>
+    {{100+200}}
+</div>
+<div>
+    <label>姓名:</label>
+    <input type="text" ng-model="name" value="" placeholder="输入你的名字"/>
+    <label>获取输入的名字:</label>{{name}}
+</div>
+
+<div>
+    <form name="myForm">
+        Email:<input type="email" name="myEmail" ng-model="text" required/>
+        <span ng-show="myForm.myEmail.$error.email">不是一个合法的邮箱地址</span>
+    </form>
+</div>
+
+</body>
+</html>

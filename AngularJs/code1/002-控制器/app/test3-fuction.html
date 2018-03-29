@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>控制器</title>
+    <script type="text/javascript" src="../../../static/angular/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myController">
+    <label>姓名:</label>
+    <input type="text" ng-model="name" placeholder="输入你的名字"/>
+    <!--通过调用方法获取属性值-->
+    <label>通过调用方法获取的名字:</label>{{getName()}}
+</div>
+
+<!--控制器定义-->
+<script>
+    var app = angular.module("myApp",[]);
+    app.controller("myController",function($scope){
+        $scope.getName = function(){
+            return "张三";
+        }
+    })
+</script>
+</body>
+</html>

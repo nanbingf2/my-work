@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模块与控制器</title>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myController">
+    名:<input type="text" ng-model="firstName"/><br>
+    姓:<input type="text" ng-model="lastName"/><br>
+    <!--<label>姓名:{{firstName+"-"+lastName}}</label>-->
+    <label>姓名:{{fullName()}}</label>
+</div>
+
+
+<script type="text/javascript" src="../../../static/angular/angular.min.js"></script>
+<script type="text/javascript" src="../controller/controll.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scope的$watch方法测试</title>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="watchController">
+    <label>姓名:</label>
+    <input type="text" ng-model="name" placeholder="请输入名字"/>
+    <label>第{{count}}次变换名字</label>{{name}}
+</div>
+
+<script type="text/javascript" src="../../../static/angular/angular.min.js"></script>
+<script>
+
+    angular.module("myApp",[]).controller("watchController",function($scope) {
+
+        $scope.name="lisi";
+        $scope.count=0;
+        //第一个参数表示监听的model,当该参数变化时会触发第二个函数
+        $scope.$watch("name",function(newValue , oldValue){
+            $scope.count++;
+            if($scope.count>10){
+                $scope.name="变换次数已经大于10次";
+            }
+        })
+
+    });
+
+
+
+
+</script>
+</body>
+</html>

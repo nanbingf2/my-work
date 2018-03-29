@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>控制器</title>
+    <script type="text/javascript" src="../../../static/angular/angular.min.js"></script>
+</head>
+<body>
+
+<!--使用本文件中的控制器-->
+<div ng-app="myApp" ng-controller="myController">
+    <label>姓名:</label>
+    <input type="text" ng-model="name" placeholder="输入你的名字"/>
+    <label>获取输入的名字:</label>{{name}}
+</div>
+
+<!--控制器定义-->
+<script>
+    var app = angular.module("myApp",[]);
+    app.controller("myController",function($scope){
+        $scope.name="zhangsan";
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器</title>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+
+<div>
+    <!-- 大小写转换 -->
+    <input type="text" ng-model="fullName" placeholder="请输入你的全名"/><br>
+    姓名大写为:{{fullName | uppercase}}<br>
+    姓名小写为:{{fullName | lowercase}}<br>
+</div>
+
+<!-- currency 过滤器将数字格式化为货币格式： -->
+<div>
+    单价:<input type="number" ng-model="price"/><br>
+    数量:<input type="number" ng-model="quantity"/><br>
+    总价:{{price*quantity | currency}}
+    总价:{{price*quantity | currency:'￥'}}
+
+</div>
+<br>
+
+<!-- 数字格式化 -->
+数字格式化:<br>
+<div>
+    <!--123,456,789-->
+    {{123456789 | number}}<br>
+    <!--123,456.00-->
+    {{123456 | number:2}}
+</div>
+
+<p>date 格式化:</p>
+<div>
+    {{date | date:"yyyy-MM-dd HH:mm:ss"}}
+</div>
+
+<p>排序操作:</p>
+<div>
+    <table>
+        <tr>
+            <td>学号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+        </tr>
+        <tr ng-repeat="stu in student | orderBy:'-id'">
+            <td>{{stu.id}}</td>
+            <td>{{stu.name}}</td>
+            <td>{{stu.age}}</td>
+        </tr>
+    </table>
+</div>
+
+
+<p>filter查找</p>
+<!--输入过滤器可以通过一个管道字符（|）和一个过滤器添加到指令中，
+该过滤器后跟一个冒号和一个模型名称。-->
+<div>
+    <input type="text" ng-model="test"/>
+    <ul>
+        <li ng-repeat="stu in student | filter:test | orderBy:'id'">
+            {{stu.id}}
+            {{stu.name}}
+            {{stu.age}}
+        </li>
+    </ul>
+</div>
+
+<p>limitTo 截取:</p>
+{{123456789 | limitTo:6}}<!--从前面开始截取6位-->
+{{123456789 | limitTo:-4}}<!--从后面开始截取4位-->
+
+<P>自定义反转控制器</P>
+<input type="text" ng-model="text"/><br>
+反转后:{{text | reverse}}
+
+<script type="text/javascript" src="../../../static/angular/angular.min.js"></script>
+<script type="text/javascript" src="../controller/controll.js"></script>
+
+</body>
+</html>

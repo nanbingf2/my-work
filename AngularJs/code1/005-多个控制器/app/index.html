@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多个控制器测试</title>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="firstController">
+    <!--当存在多个控制器并且嵌套时
+        当外层控制器中的属性值变化时，如果内层相同的属性开始没有属性值时,
+        内层的属性值会跟着外层的属性值一起变化;
+        当改变内层的属性值时，外层相同的属性并不会发生改变-->
+    <input type="text" ng-model="name"/>
+    <div ng-controller="secondController">
+        <input type="text" ng-model="name"/>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../../static/angular/angular.min.js"></script>
+<script>
+    <!--定义两个控制器-->
+    angular.module("myApp",[]).controller("firstController",function($scope){
+        $scope.name="zhangsan";
+    }).controller("secondController",function($scope){
+        $scope.name="lisi";
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scope的apply方法测试</title>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="timeController">
+    <label>当前时间:</label>{{time}}
+</div>
+
+<script type="text/javascript" src="../../../static/angular/angular.min.js"></script>
+<script>
+    angular.module("myApp",[]).controller("timeController",function($scope) {
+        $scope.time = new Date();
+
+        /*
+         //由于没有触发脏检查,并不会真的更新时间
+         setInterval(function(){
+         //每隔一秒钟更新一次时间
+         $scope.time = new Date();
+         },1000);*/
+
+        setInterval(function(){
+            //调用scope的apply方法会触发脏检查
+            $scope.$apply(function(){
+                $scope.time=new Date();
+            });
+        },1000);
+    });
+
+
+
+
+</script>
+</body>
+</html>

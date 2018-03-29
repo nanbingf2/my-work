@@ -1,0 +1,24 @@
+angular.module("myApp",[])
+.controller("myController",function($scope){
+    $scope.status=false;
+    $scope.changeStatus=function(){
+        $scope.status=!$scope.status;
+    };
+    $scope.isShow=false;
+    $scope.show=function(){
+        $scope.isShow=!$scope.isShow;
+    }
+    $scope.users=[{
+        id:'10001',
+        name:'zhangsan',
+        age:18
+    },{
+        id:'10002',
+        name:'lisi',
+        age:19
+    },{
+        id:'10003',
+        name:'wangwu',
+        age:16
+    }]
+})

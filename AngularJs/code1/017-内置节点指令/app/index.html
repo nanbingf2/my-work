@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器</title>
+    <link rel="stylesheet" href="../../../static/bootstrap/css/bootstrap.min.css">
+    <style>
+        .red{
+            color:red;
+        }
+        .blue{
+            color:blue;
+        }
+    </style>
+</head>
+<body ng-app="myApp">
+
+<div ng-controller="myController">
+    <div ng-style="{color:'red','margin-top':'50px','margin-left':'50px'}">
+        ng-style
+    </div>
+
+    <div ng-class="{red:status}">
+        <button ng-click="changeStatus()">切换ng-class样式</button>
+        ng-class
+    </div>
+    <div>
+        <ul ng-switch on="status">
+            <li ng-switch-when="true">true</li>
+            <li ng-switch-when="false">false</li>
+        </ul>
+    </div>
+
+    <div ng-style="{'margin-top':'50px'}">
+        <ul>
+            <li ng-repeat="user in users" ng-class-odd="{red:true}"
+                ng-class-even="{blue:true}">
+                {{user.id}}
+                {{user.name}}
+                {{user.age}}
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <button ng-click="show()">切换显示状态</button>
+        <p ng-show="isShow">ng-show</p>
+    </div>
+
+
+    <div ng-if="isShow">ng-if为真</div>
+</div>
+
+<script type="text/javascript" src="../../../static/angular/angular.min.js"></script>
+<script type="text/javascript" src="../controller/controll.js"></script>
+
+</body>
+</html>
