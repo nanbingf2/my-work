@@ -22,12 +22,24 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="chapter15" />
+        <module name="chapter16" />
+        <module name="chapter2" />
+        <module name="chapter3" />
         <module name="Quartz-Demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="chapter15" target="1.8" />
+      <module name="chapter16" target="1.8" />
+      <module name="chapter2" target="1.8" />
+      <module name="chapter3" target="1.6" />
+      <module name="chapter4" target="1.8" />
+      <module name="Demo" target="1.5" />
       <module name="Netty" target="1.5" />
       <module name="Quartz-Demo" target="1.7" />
+      <module name="spring4" target="1.8" />
+      <module name="Spring4" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
