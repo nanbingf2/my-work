@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:cache="http://www.springframework.org/schema/cache"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+	<!--配置静态方法名匹配切面-->
+	<bean id="waiterTarget" class="com.rogercw.advisor.Waiter"/>
+	<bean id="sellerTarget" class="com.rogercw.advisor.Seller"/>
+	<bean id="beforeAdvice" class="com.rogercw.advice.GreetingBeforeAdvice"/>
+	<!--定义切面,并注入增强-->
+	<!--<bean id="greetingAdvisor" class="com.rogercw.advisor.GreetingAdvisor"
+		  p:advice-ref="beforeAdvice"/>-->
+
+	<!--<bean id="waiterProxy"  class="org.springframework.aop.framework.ProxyFactoryBean"
+		  p:proxyTargetClass="true"
+		  p:target-ref="waiterTarget"
+		  p:interceptorNames="greetingAdvisor"/>
+
+	<bean id="sellerProxy"  class="org.springframework.aop.framework.ProxyFactoryBean"
+		  p:proxyTargetClass="true"
+		  p:target-ref="sellerTarget"
+		  p:interceptorNames="greetingAdvisor"/>-->
+
+	<!--配置静态正则表达式方法匹配切面-->
+	<!--<bean id="regexpAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"
+		  p:advice-ref="beforeAdvice">
+		<property name="patterns">
+			<list>
+				<value>.*greet.*</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="waiterProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
+		  p:proxyTargetClass="true"
+		  p:interceptorNames="regexpAdvisor"
+		  p:target-ref="waiterTarget"/>
+
+	<bean id="sellerProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
+		  p:proxyTargetClass="true"
+		  p:interceptorNames="regexpAdvisor"
+		  p:target-ref="sellerTarget"/>-->
+
+	<!--动态切面配置-->
+	<!--<bean id="dynamicAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="pointcut">
+			<bean class="com.rogercw.advisor.GreetingDynamicPointcut"/>
+		</property>
+		<property name="advice" ref="beforeAdvice"/>
+	</bean>
+
+	<bean id="waiterProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
+		  p:target-ref="waiterTarget"
+		  p:proxyTargetClass="true"
+		  p:interceptorNames="dynamicAdvisor"/>
+	<bean id="sellerProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
+		  p:target-ref="sellerTarget"
+		  p:proxyTargetClass="true"
+		  p:interceptorNames="dynamicAdvisor"/>-->
+
+	<!--通过controlPointcut和-->
+	<!--<bean id="controlPointcut" class="org.springframework.aop.support.ControlFlowPointcut">
+		<constructor-arg type="java.lang.Class" value="com.rogercw.advisor.WaiterDelegate"/>
+		<constructor-arg type="java.lang.String" value="server"/>
+	</bean>
+	<bean id="controlAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor"
+		  p:advice-ref="beforeAdvice"
+		  p:pointcut-ref="controlPointcut"/>
+	<bean id="waiterProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
+		  p:interceptorNames="controlAdvisor"
+		  p:proxyTargetClass="true"
+		  p:target-ref="waiterTarget"/>-->
+
+	<!--配置复合切面-->
+	<bean id="composablePointcut" class="com.rogercw.advisor.GreetingComposablePointcut"/>
+	<bean id="composableAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor"
+		  p:pointcut="#{composablePointcut.intersectionPointcut}"
+		  p:advice-ref="beforeAdvice"/>
+
+	<bean id="waiterProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
+		  p:interceptorNames="composableAdvisor"
+		  p:target-ref="waiterTarget"
+		  p:proxyTargetClass="true"/>
+
+</beans>

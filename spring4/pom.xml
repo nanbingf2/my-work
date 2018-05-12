@@ -13,6 +13,13 @@
         <module>chapter15</module>
         <module>chapter3</module>
         <module>chapter16</module>
+        <module>chapter17</module>
+        <module>chapter18</module>
+        <module>chapter9</module>
+        <module>chapter7</module>
+        <module>chapter8</module>
+        <module>chapter11</module>
+        <module>chapter20</module>
     </modules>
 
     <properties>
@@ -21,6 +28,7 @@
         <druid.version>1.1.6</druid.version>
         <testng.version>6.8.7</testng.version>
         <aspectj.version>1.8.1</aspectj.version>
+        <slf4j.version>1.7.5</slf4j.version>
     </properties>
 
     <dependencies>
@@ -41,9 +49,20 @@
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
@@ -97,7 +116,6 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -111,6 +129,30 @@
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

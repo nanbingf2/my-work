@@ -1,7 +1,6 @@
 package com.rogercw.service;
 
 import com.rogercw.domain.User;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by 1 on 2018/4/16.

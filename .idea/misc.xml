@@ -6,7 +6,10 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/spring4/chapter15" />
     <file type="web" url="file://$PROJECT_DIR$/spring4/chapter16" />
+    <file type="web" url="file://$PROJECT_DIR$/spring4/chapter17" />
+    <file type="web" url="file://$PROJECT_DIR$/spring4/chapter18" />
     <file type="web" url="file://$PROJECT_DIR$/spring4/chapter2" />
+    <file type="web" url="file://$PROJECT_DIR$/spring4/chapter20" />
     <file type="web" url="file://$PROJECT_DIR$/spring4/chapter3" />
     <file type="web" url="file://$PROJECT_DIR$/spring4/chapter4" />
   </component>
@@ -17,6 +20,7 @@
         <option value="$PROJECT_DIR$/Spring4/pom.xml" />
         <option value="$PROJECT_DIR$/spring4/pom.xml" />
         <option value="$PROJECT_DIR$/spring4/chapter15/pom.xml" />
+        <option value="$PROJECT_DIR$/hibernate/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

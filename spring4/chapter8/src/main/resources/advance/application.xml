@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:cache="http://www.springframework.org/schema/cache"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     http://www.springframework.org/schema/cache
+     http://www.springframework.org/schema/cache/spring-cache.xsd
+	 http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!--配置复合切点运算切面-->
+	<aop:aspectj-autoproxy/>
+	<bean id="naviWaiter" class="com.rogercw.NaviWaiter"/>
+	<bean id="goodSeller" class="com.rogercw.GoodSeller"/>
+	<bean id="errorSeller" class="com.rogercw.ErrorSeller"/>
+	<bean class="com.rogercw.advance.TestAspect"/>
+</beans>

@@ -2,9 +2,6 @@ package com.rogercw;
 
 import com.rogercw.domain.User;
 import com.rogercw.service.UserService;
-import jdk.nashorn.internal.runtime.regexp.joni.ApplyCaseFoldArg;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
 import org.testng.annotations.Test;

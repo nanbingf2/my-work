@@ -3,7 +3,6 @@ package com.rogercw.cache.cachegroup;
 import com.rogercw.cache.domain.Member;
 import com.rogercw.cache.domain.User;
 import com.rogercw.cache.domain.Visitor;
-import com.rogercw.cache.utils.UsersMapInit;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;

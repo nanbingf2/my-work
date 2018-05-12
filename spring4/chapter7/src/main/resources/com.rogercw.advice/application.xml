@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:cache="http://www.springframework.org/schema/cache"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+	<!--前置增强配置-->
+	<!--<bean id="greetingAdvice" class="com.rogercw.advice.GreetingBeforeAdvice"/>
+	<bean id="target" class="com.rogercw.advice.NaviWaiter"/>
+	<bean id="proxyWaiter" class="org.springframework.aop.framework.ProxyFactoryBean"
+		  p:target-ref="target"
+		  p:proxyInterfaces="com.rogercw.advice.Waiter"
+		  p:interceptorNames="greetingAdvice"/>-->
+
+
+	<!--配置后置增强-->
+	<!--<bean id="greetingAdvice" class="com.rogercw.advice.GreetingAfterAdvice"/>
+	<bean id="target" class="com.rogercw.advice.NaviWaiter"/>
+	&lt;!&ndash;proxyTargetClass：强制使用CGLIB动态代理&ndash;&gt;
+	<bean id="proxyWaiter" class="org.springframework.aop.framework.ProxyFactoryBean"
+		  p:target-ref="target"
+		  p:interceptorNames="greetingAdvice"
+		  p:proxyTargetClass="true"/>-->
+
+	<!--环绕增强-->
+	<!--<bean id="target" class="com.rogercw.advice.NaviWaiter"/>
+	<bean id="greetingAdvice" class="com.rogercw.advice.GreetingInterceptor"/>
+	<bean id="proxyWaiter" class="org.springframework.aop.framework.ProxyFactoryBean"
+		  p:target-ref="target"
+		  p:interceptorNames="greetingAdvice"
+		  p:proxyTargetClass="true"/>-->
+
+	<!--异常抛出增强-->
+	<bean id="target" class="com.rogercw.advice.ForumService"/>
+	<bean id="transaction" class="com.rogercw.advice.TransactionManager"/>
+	<bean id="proxyService" class="org.springframework.aop.framework.ProxyFactoryBean"
+		  p:target-ref="target"
+		  p:interceptorNames="transaction"
+		  p:proxyTargetClass="true"/>
+</beans>

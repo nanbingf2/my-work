@@ -1,11 +1,10 @@
 package com.rogercw.cache.cacheput;
 
-import com.rogercw.cache.domain.User;
 import com.rogercw.cache.utils.UsersMapInit;
+import com.rogercw.cache.domain.User;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**

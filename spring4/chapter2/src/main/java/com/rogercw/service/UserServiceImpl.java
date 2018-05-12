@@ -1,9 +1,9 @@
 package com.rogercw.service;
 
-import com.rogercw.dao.LoginLogDao;
 import com.rogercw.dao.UserDao;
 import com.rogercw.domain.LoginLog;
 import com.rogercw.domain.User;
+import com.rogercw.dao.LoginLogDao;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

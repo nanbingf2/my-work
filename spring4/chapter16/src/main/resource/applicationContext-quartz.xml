@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	<bean id="dataSource"
+		  class="org.apache.commons.dbcp.BasicDataSource"
+	destroy-method="close"
+	p:driverClassName="com.mysql.jdbc.Driver"
+	p:url="jdbc:mysql://localhost:3306/sampledb"
+	p:username="root"
+	p:password="1234"/>
+
+
+<!-- 通过JobDetailBean实现 -->
+	<bean name="jobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean"
+		p:jobClass="com.rogercw.spring.MyJob"
+		p:applicationContextJobDataKey="applicationContext">
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="name" value="quartz-Spring"></entry>
+			</map>
+		</property>
+	</bean>
+
+	<!--通过MethodInvokingJobDetailFactoryBean指定-->
+	<bean id="jobDdetail_method" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"
+		p:targetObject-ref="myService"
+		p:targetMethod="doJob"
+		p:concurrent="false">
+	</bean>
+
+	<bean id="myService" class="com.rogercw.service.MyService"></bean>
+
+
+	<!--创建SimpleTrigger对象-->
+	<bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean"
+		p:jobDetail-ref="jobDetail"
+		  p:startDelay="1000"
+		  p:repeatInterval="2000"
+		  p:repeatCount="50">
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="count" value="50"></entry>
+			</map>
+		</property>
+	</bean>
+
+	<!--创建CronTrigger对象-->
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"
+		  p:jobDetail-ref="jobDetail"
+		  p:cronExpression="0/5 * * * * ?">
+	</bean>
+
+	<!--创建Scheduler对象-->
+	<bean id="scheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="simpleTrigger"></ref>
+			</list>
+		</property>
+
+		<property name="schedulerContextAsMap">
+			<map>
+				<entry key="timeout" value="1000"></entry>
+			</map>
+		</property>
+		<property name="configLocation" value="classpath:quartz.properties">
+
+		</property>
+	</bean>
+</beans>

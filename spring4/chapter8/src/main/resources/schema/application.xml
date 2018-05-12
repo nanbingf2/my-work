@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:cache="http://www.springframework.org/schema/cache"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     http://www.springframework.org/schema/cache
+     http://www.springframework.org/schema/cache/spring-cache.xsd
+	 http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="adviceMethod" class="com.rogercw.schema.AdviceMethod"/>
+	<bean id="waiter" class="com.rogercw.NaviWaiter"/>
+	<!--使用Schema配置切面-->
+	<aop:config proxy-target-class="true">
+		<aop:aspect ref="adviceMethod">
+			<!--配置命名切点-->
+			<aop:pointcut id="waiterServerPointcut" expression="target(com.rogercw.Waiter)
+			 		and execution(* server(..))"/>
+			<!--前置增强-->
+			<aop:before method="before" pointcut="target(com.rogercw.NaviWaiter) and execution(* greet(..))"/>
+			<!--后置增强-->
+			<aop:after-returning method="afterReturning" pointcut-ref="waiterServerPointcut"/>
+		</aop:aspect>
+
+		<aop:advisor advice-ref="beforeAdvice" pointcut="execution(* greet(..))"/>
+	</aop:config>
+	<bean id="beforeAdvice" class="com.rogercw.schema.BeforeAdvice"/>
+</beans>

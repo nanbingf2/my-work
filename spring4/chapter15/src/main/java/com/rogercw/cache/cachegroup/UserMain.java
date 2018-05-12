@@ -1,8 +1,8 @@
 package com.rogercw.cache.cachegroup;
 
 import com.rogercw.cache.domain.Member;
-import com.rogercw.cache.domain.User;
 import com.rogercw.cache.domain.Visitor;
+import com.rogercw.cache.domain.User;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.ApplicationContext;

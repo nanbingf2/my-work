@@ -24,7 +24,7 @@ public class SimpleTriggerRunner {
         //设置触发器的启动时间,执行时间间隔,执行次数等
         trigger.setStartTime(new Date());
         trigger.setRepeatInterval(2000);
-        trigger.setRepeatCount(10);
+        trigger.setRepeatCount(50);
 
         //将JobDetails和触发器注册到调度器中
         scheduler.scheduleJob(jobDetail,trigger);

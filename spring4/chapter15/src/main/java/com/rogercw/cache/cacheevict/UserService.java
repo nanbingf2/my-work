@@ -1,7 +1,7 @@
 package com.rogercw.cache.cacheevict;
 
-import com.rogercw.cache.domain.User;
 import com.rogercw.cache.utils.UsersMapInit;
+import com.rogercw.cache.domain.User;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
