@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="test">
+
+   <!-- <test name="testGroup">
+        <classes>
+            <class name="com.rogercw.group.TestNGGroup"/>
+        </classes>
+    </test>-->
+
+    <test name="testGroupC">
+        <groups>
+            <run>
+                <include name="groupc"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.rogercw.group"/>
+        </packages>
+    </test>
+</suite>

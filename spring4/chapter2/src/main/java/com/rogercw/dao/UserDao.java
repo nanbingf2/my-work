@@ -1,11 +1,6 @@
 package com.rogercw.dao;
 
 import com.rogercw.domain.User;
-import org.omg.PortableInterceptor.USER_EXCEPTION;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
-
-import javax.annotation.Resource;
 
 /**
  * Created by 1 on 2018/4/4.

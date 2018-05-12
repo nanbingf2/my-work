@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="testDepends">
+    <test name="testParameter">
+        <parameter name="username" value="zhangsan"/>
+        <parameter name="password" value="1234"/>
+        <classes>
+            <class name="com.rogercw.patamter.TestNGParamterByXML"/>
+        </classes>
+    </test>
+</suite>

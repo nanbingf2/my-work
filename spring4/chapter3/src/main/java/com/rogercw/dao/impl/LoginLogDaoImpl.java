@@ -11,7 +11,7 @@ import javax.annotation.Resource;
  * Created by 1 on 2018/4/4.
  */
 @Repository
-public class LoginLogDaoImpl implements LoginLogDao{
+public class LoginLogDaoImpl implements LoginLogDao {
 
     @Resource
     private JdbcTemplate jdbcTemplate;

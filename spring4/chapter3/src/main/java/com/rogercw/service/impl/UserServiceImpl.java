@@ -15,7 +15,7 @@ import java.util.Date;
  * Created by 1 on 2018/4/16.
  */
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     //注入UserDao
     @Resource

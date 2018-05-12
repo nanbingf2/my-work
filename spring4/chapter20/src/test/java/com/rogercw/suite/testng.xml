@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="test">
+
+   <test name="testSuite">
+       <classes>
+           <class name="com.rogercw.suite.TestConfig"/>
+           <class name="com.rogercw.suite.TestSuite"/>
+       </classes>
+   </test>
+
+    <test name="testSuiteC">
+        <classes>
+            <class name="com.rogercw.suite.TestConfig"/>
+            <class name="com.rogercw.suite.TestSuiteGroup"/>
+        </classes>
+    </test>
+
+    <test name="testGroupA">
+        <groups>
+            <run>
+                <include name="suiteA"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="com.rogercw.suite.TestConfig"/>
+            <class name="com.rogercw.suite.TestSuiteGroup"/>
+        </classes>
+    </test>
+</suite>

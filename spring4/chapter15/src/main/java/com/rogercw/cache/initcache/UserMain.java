@@ -3,7 +3,6 @@ package com.rogercw.cache.initcache;
 import com.rogercw.cache.domain.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Created by 1 on 2018/4/18.
