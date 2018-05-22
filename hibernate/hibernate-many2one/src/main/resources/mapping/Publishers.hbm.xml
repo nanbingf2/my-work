@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.rogercw.domain.Publishers" table="publishers" schema="hibernate">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name"/>
+        <!--单向一对多-->
+       <!-- <set name="books" lazy="false">
+            <key column="publisherId"></key>
+            <one-to-many class="com.rogercw.domain.Books"/>
+        </set>-->
+
+        <!--双向一对多配置:关联关系由多的一方管理-->
+        <!--<set name="books" inverse="true" lazy="false">
+            <key column="publisherId" not-null="true"></key>
+            <one-to-many class="com.rogercw.domain.Books"/>
+        </set>-->
+
+        <!--双向多对一配置:关联关系由一的一方管理-->
+        <set name="books" lazy="false" inverse="false" cascade="all">
+            <key column="publisherId"></key>
+            <one-to-many class="com.rogercw.domain.Books"/>
+        </set>
+</class>
+</hibernate-mapping>

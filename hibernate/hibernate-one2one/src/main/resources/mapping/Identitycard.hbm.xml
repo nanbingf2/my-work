@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.rogercw.domain.IdentityCard" table="identitycard" schema="hibernate">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="cardidNo" column="cardidNo"/>
+        <!--一对一配置-->
+        <one-to-one name="people" class="com.rogercw.domain.People"
+                    lazy="false"/>
+    </class>
+</hibernate-mapping>

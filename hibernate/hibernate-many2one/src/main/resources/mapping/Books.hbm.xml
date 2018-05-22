@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.rogercw.domain.Books" table="books" schema="hibernate">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="title" column="title"/>
+        <property name="author" column="author"/>
+        <property name="publishDate" column="publish_date"/>
+        <property name="price" column="price"/>
+
+        <!--单向多对一配置-->
+        <!--<many-to-one name="publisher" column="publisherId"
+                     class="com.rogercw.domain.Publishers" lazy="false"/>-->
+
+        <!--双向多对一配置:关联关系由多的一方管理-->
+        <!--<many-to-one name="publisher" column="publisherId" cascade="save-update"
+                     class="com.rogercw.domain.Publishers"/>-->
+
+        <!--双向多对一配置:关联关系由一的一方管理-->
+        <many-to-one name="publisher" column="publisherId" cascade="all"
+                     class="com.rogercw.domain.Publishers"
+                     insert="false" update="false"/>
+    </class>
+</hibernate-mapping>

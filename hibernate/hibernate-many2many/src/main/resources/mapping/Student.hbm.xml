@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.rogercw.domain.Student" table="student" schema="hibernate">
+        <id name="studentId" column="studentId">
+            <generator class="native"/>
+        </id>
+        <property name="studentName" column="studentName"/>
+
+        <!--多对多配置-->
+        <set name="courses" table="sc" lazy="false" cascade="save-update" inverse="false">
+            <!--这里的column属性为指定中间表sc中参照student表中的外键名称-->
+            <key column="sid" not-null="true"></key>
+            <many-to-many column="cid" class="com.rogercw.domain.Course"/>
+        </set>
+    </class>
+</hibernate-mapping>

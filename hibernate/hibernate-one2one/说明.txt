@@ -1,0 +1,12 @@
+为了区别映射文件和注解配置两种方式:这里分别使用了两种实体
+
+domain包下的类是使用映射文件配置方式所对应的类.
+entity包下的类是使用注解方式对应的类
+
+运行annotation包下的测试方法时,请确保配置文件中的<mapper>标签是以class属性加载的
+如：<mapping class="com.rogercw.entity.People"/>
+
+
+在运行one2one、one2Many、many2Many包下的测试类时,
+请确保配置文件中的<mapper>标签是以resource属性加载的.
+如：<mapping resource="mapping/People.hbm.xml"/>
