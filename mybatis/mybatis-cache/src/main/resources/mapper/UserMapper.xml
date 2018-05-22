@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rogercw.mapper.UserMapper">
+
+	<!--开启二级缓存-->
+	<cache eviction="LRU" flushInterval="60000"
+		   size="512" readOnly="true"/>
+
+	<!--新增用户-->
+	<insert id="save" parameterType="com.rogercw.domain.User" useGeneratedKeys="true">
+		INSERT INTO tb_user(name,age,sex) values (#{name},#{age},#{sex})
+	</insert>
+
+	<!--查找用户-->
+	<select id="findById" parameterType="int" resultType="com.rogercw.domain.User">
+		SELECT * FROM tb_user WHERE id= #{id}
+	</select>
+
+	<!--查找用户并返回主键-->
+	<insert id="insertUser" parameterType="com.rogercw.domain.User">
+		<selectKey keyProperty="id" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO tb_user(name,age,sex) VALUES(#{name},#{age},#{sex})
+	</insert>
+
+
+	<update id="updateUser" parameterType="com.rogercw.domain.User">
+		UPDATE tb_user SET
+			name=#{name},
+			age=#{age},
+			sex=#{sex}
+		WHERE id=#{id}
+	</update>
+
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM tb_user WHERE id=#{id}
+	</delete>
+
+	<select id="findAll" resultType="com.rogercw.domain.User">
+		SELECT * FROM tb_user
+	</select>
+</mapper>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rogercw.mapper.EmployeeMapper">
+
+	<select id="selectEmployeeById" resultType="com.rogercw.domain.Employee">
+		SELECT * FROM t_employee WHERE id=#{id}
+	</select>
+
+	<select id="selectEmployeeBySex" resultType="com.rogercw.domain.Employee">
+		SELECT * FROM t_employee
+		<if test="sex!=null">
+			WHERE sex=#{sex}
+		</if>
+	</select>
+
+	<select id="selectByCondition" resultType="com.rogercw.domain.Employee">
+		SELECT * FROM t_employee WHERE 1=1
+		<choose>
+			<when test="id!=null">
+				AND id=#{id}
+			</when>
+
+			<when test="loginname!=null">
+				AND loginname=#{loginname}
+			</when>
+
+			<otherwise>
+				AND sex="女"
+			</otherwise>
+		</choose>
+	</select>
+
+
+	<update id="updateEmployee" parameterType="com.rogercw.domain.Employee">
+		UPDATE t_employee
+		<set>
+			<if test="loginname!=null">
+				loginname=#{loginname},
+			</if>
+			<if test="password!=null">
+				password=#{password},
+			</if>
+			<if test="realname!=null">
+				realname=#{realname},
+			</if>
+			<if test="age!=null">
+				age=#{age},
+			</if>
+			<if test="sex!=null">
+				sex=#{sex},
+			</if>
+			<if test="salary!=null">
+				salary=#{salary},
+			</if>
+			<if test="phone!=null">
+				phone=#{phone},
+			</if>
+		</set>
+		WHERE id=#{id}
+	</update>
+
+
+	<select id="selectEmployeeIn" resultType="com.rogercw.domain.Employee">
+		SELECT * FROM t_employee WHERE id IN
+		<foreach collection="list" item="id"
+				 open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</select>
+
+</mapper>

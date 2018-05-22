@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rogercw.mapper.StudentMapper">
+
+    <resultMap id="studentResultMap" type="com.rogercw.domain.Student">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <association property="clazz"
+                     javaType="com.rogercw.domain.Clazz">
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+            <result property="code" column="code"/>
+        </association>
+    </resultMap>
+
+    <select id="selectStudentById" resultMap="studentResultMap">
+        SELECT * FROM t_student s, t_class c WHERE s.id=#{id} AND s.class_id=c.id
+    </select>
+
+    <select id="selectStudentByClassId" resultMap="studentResultMap">
+        SELECT * FROM t_student WHERE class_id=#{id}
+    </select>
+
+</mapper>

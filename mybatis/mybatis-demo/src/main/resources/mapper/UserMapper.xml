@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rogercw.mapper.UserMapper">
+	<!--新增用户-->
+	<insert id="save" parameterType="com.rogercw.domain.User" useGeneratedKeys="true">
+		INSERT INTO tb_user(name,age,sex) values (#{name},#{age},#{sex})
+	</insert>
+
+	<!--查找用户-->
+	<select id="findById" parameterType="int" resultType="com.rogercw.domain.User">
+		SELECT * FROM tb_user WHERE id= #{id}
+	</select>
+
+	<!--查找用户并返回主键-->
+	<insert id="insertUser" parameterType="com.rogercw.domain.User">
+		<selectKey keyProperty="id" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO tb_user(name,age,sex) VALUES(#{name},#{age},#{sex})
+	</insert>
+
+
+	<update id="updateUser" parameterType="com.rogercw.domain.User">
+		UPDATE tb_user SET
+			name=#{name},
+			age=#{age},
+			sex=#{sex}
+		WHERE id=#{id}
+	</update>
+
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM tb_user WHERE id=#{id}
+	</delete>
+
+	<select id="findUserTotal" resultType="int">
+		SELECT COUNT(*) FROM tb_user
+	</select>
+
+	<!--声明resultMap
+		id标签:专门为查询结果中唯一列进行映射
+		result标签:为查询结果中的普通列进行映射
+	-->
+	<resultMap id="userResultMap" type="com.rogercw.domain.User">
+		<id property="id" column="_id"/>
+		<result property="name" column="_name"/>
+		<result property="age" column="_age"/>
+		<result property="sex" column="_sex"/>
+	</resultMap>
+
+	<!--使用resultMap进行结果映射-->
+	<select id="selectResultMap" resultMap="userResultMap">
+		SELECT id _id,name _name,age _age,sex _sex FROM tb_user WHERE id=#{id}
+	</select>
+
+</mapper>

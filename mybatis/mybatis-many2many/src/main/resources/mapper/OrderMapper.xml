@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rogercw.mapper.OrderMapper">
+
+    <resultMap id="orderResultMap" type="com.rogercw.domain.Order">
+        <id property="id" column="id"/>
+        <result property="code" column="code"/>
+        <result property="total" column="total"/>
+
+        <!--与用户的多对一关联-->
+        <association property="user" javaType="com.rogercw.domain.User">
+            <id property="id" column="id"/>
+            <result property="loginname" column="loginname"/>
+            <result property="password" column="password"/>
+            <result property="phone" column="phone"/>
+            <result property="address" column="address"/>
+        </association>
+
+        <!--与商品的多对多关联-->
+        <collection property="articles" javaType="java.util.ArrayList" fetchType="lazy"
+                    ofType="com.rogercw.domain.Article" column="id"
+                    select="com.rogercw.mapper.ArticleMapper.selectArticleByOrderId">
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+            <result property="remark" column="remark"/>
+            <result property="price" column="price"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectOrderById" resultMap="orderResultMap">
+        SELECT * FROM t_order WHERE id=#{id}
+    </select>
+
+    <select id="selectOrderByUserId" resultMap="orderResultMap">
+        SELECT * FROM t_order WHERE user_id=#{id}
+    </select>
+</mapper>
