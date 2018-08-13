@@ -6,13 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="FastDfs-Demo" />
         <module name="redis-demo" />
+        <module name="solr-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="FastDfs-Demo" target="1.5" />
       <module name="redis-demo" target="1.5" />
+      <module name="solr-demo" target="8" />
       <module name="spring-data-redis" target="1.5" />
       <module name="spring-data-redis-demo" target="1.5" />
+      <module name="spring-data-solr" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
