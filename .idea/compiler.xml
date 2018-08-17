@@ -6,13 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ActiveMq" />
         <module name="FastDfs-Demo" />
+        <module name="Freemarker" />
         <module name="redis-demo" />
         <module name="solr-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ActiveMq" target="1.5" />
       <module name="FastDfs-Demo" target="1.5" />
+      <module name="Freemarker" target="1.5" />
       <module name="redis-demo" target="1.5" />
       <module name="solr-demo" target="8" />
       <module name="spring-data-redis" target="1.5" />

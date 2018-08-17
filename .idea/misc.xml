@@ -9,6 +9,8 @@
         <option value="$PROJECT_DIR$/spring-data-redis/pom.xml" />
         <option value="$PROJECT_DIR$/FastDfs-Demo/pom.xml" />
         <option value="$PROJECT_DIR$/spring-data-solr/pom.xml" />
+        <option value="$PROJECT_DIR$/Freemarker/pom.xml" />
+        <option value="$PROJECT_DIR$/ActiveMq/pom.xml" />
       </list>
     </option>
   </component>

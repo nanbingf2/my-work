@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ActiveMq/ActiveMq.iml" filepath="$PROJECT_DIR$/ActiveMq/ActiveMq.iml" />
       <module fileurl="file://$PROJECT_DIR$/FastDfs-Demo/FastDfs-Demo.iml" filepath="$PROJECT_DIR$/FastDfs-Demo/FastDfs-Demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Freemarker/Freemarker.iml" filepath="$PROJECT_DIR$/Freemarker/Freemarker.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/my-work.iml" filepath="$PROJECT_DIR$/.idea/my-work.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-data-redis/redis-demo/redis-demo.iml" filepath="$PROJECT_DIR$/spring-data-redis/redis-demo/redis-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-data-solr/solr-demo/solr-demo.iml" filepath="$PROJECT_DIR$/spring-data-solr/solr-demo/solr-demo.iml" />
