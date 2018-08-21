@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ActiveMq" />
+        <module name="activemq-springboot" />
         <module name="FastDfs-Demo" />
         <module name="Freemarker" />
         <module name="redis-demo" />
@@ -15,6 +15,10 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ActiveMq" target="1.5" />
+      <module name="activeMq-demo" target="1.5" />
+      <module name="activeMq-spring-consumer" target="1.5" />
+      <module name="activeMq-spring-producer" target="1.5" />
+      <module name="activemq-springboot" target="1.8" />
       <module name="FastDfs-Demo" target="1.5" />
       <module name="Freemarker" target="1.5" />
       <module name="redis-demo" target="1.5" />
